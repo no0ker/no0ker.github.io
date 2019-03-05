@@ -65,3 +65,31 @@ public class PrettyFormatter {
 ### Шаг 5.
 Оцениваем читабельность.
 Понятно, что делает каждая строка? Ну, вроде да. Добавляем делимое, делитель и частное.
+
+
+### Шаг 6.
+Понятно, что в процессе вывода у нас есть "повторяющиеся блоки".
+Значит, ДТО нужно поправить
+```markdown
+    public class ResultDto {
+        private long divident;
+        private long divider;
+        private long result;
+        private List<StepDto> steps;
+}
+```
+и вывод тоже нужно подправить
+```markdown
+    public List<String> format(ResultDto resultDto) {
+        addDivident(result, resultDto);
+        addDivider(result, resultDto);
+        addResult(result, resultDto);
+        for (StepDto step : resultDto.getSteps()) {
+            addStep(result, step);
+        }
+        return result;
+    }
+```
+
+### Шаг 7.
+Вспомнить про палочки и символы подчеркивания. 
