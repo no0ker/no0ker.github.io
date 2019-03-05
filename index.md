@@ -1,37 +1,67 @@
-## Welcome to GitHub Pages
+## Небольшие комментарии к заданию #3
 
-You can use the [editor on GitHub](https://github.com/no0ker/no0ker.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Внимание! Это не готовый код - не нужно его копировать. Это лишь небольшая подсказка.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Шаг 1.
+Само деление не представляет интереса. Интерес представляет только вывод результата. Приступаем соответственно к нему. Пишем код, который напрашивается сразу же.
 
 ```markdown
-Syntax highlighted code block
+public class PrettyFormatter {
+    public List<String> format(ResultDto resultDto) {
+    }
+}
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+class ResultDto {
+}
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Шаг 2.
+Добавляем вывод делимоого.
+В дтошку добавляем поле.
+```markdown
+public class ResultDto {
+    private long divident;
+}
+```
+Добавляем вывод этого поля.
+```markdown
+public class PrettyFormatter {
+    public List<String> format(ResultDto resultDto) {
+        ...
+        addDivident(result, resultDto);
+        ...
+        return result;
+    }
+    
+    private void addDivident(List<String> result, ResultDto divident) {
+        String row = result.get(0);
+        String changedRow = insert(row, divident.getDivident(), 1);
+        result.add(0, changedRow);
+    }
+    
+    private String insert(String sourceString, Object value, int position) {
+        ...
+    }
+}
+```
 
-### Jekyll Themes
+### Шаг 3.
+Оцениваем читабельность кода и смотрим результат.
+Читабельные названия методов? Вроде, да
+Читабельные методы? Ну, они короткие, вроде, понятные. Да.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/no0ker/no0ker.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Шаг 4.
+Добавялем к результату вывод делителя и частного.
+```markdown
+    public List<String> format(ResultDto resultDto) {
+        ...
+        addDivident(result, resultDto);
+        addDivider(result, resultDto);
+        addResult(result, resultDto);
+        ...
+    }
+```
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Шаг 5.
+Оцениваем читабельность.
+Понятно, что делает каждая строка? Ну, вроде да. Добавляем делимое, делитель и частное.
